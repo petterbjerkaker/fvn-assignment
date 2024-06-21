@@ -11,6 +11,7 @@ body{
 	display:flex;
 	justify-content: center;
 	padding:2rem;
+	padding-top:6rem;
 	margin-top:2rem;
 	font-size:4rem;
 }
@@ -82,9 +83,11 @@ p{
 .checkbox-container_title{
 	width:100%;
 	height:1.5rem;
-	font-size:1.25rem;
+	font-size:1.5rem;
 	padding:40px;
-	margin-left:35px;
+	padding-left:5rem;
+	display: flex;
+	justify-content: center;
 }
 
 .checkbox-container{

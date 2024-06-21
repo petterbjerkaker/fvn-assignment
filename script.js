@@ -107,6 +107,7 @@ const housingData = {
 				for(const key in cityData){
 					if(cityData.hasOwnProperty(key) && key !== "image"){
 						const detail = document.createElement("p");
+						detail.setAttribute("data-key", key);
 						detail.textContent = `${key}: ${cityData[key]}`;
 						cityInfo.appendChild(detail);
 					}
@@ -141,7 +142,24 @@ const housingData = {
 		});
 	 }
 
+	 function updateDisplayedFields(){
+		const checkboxes = document.querySelectorAll("#checkbox-container input[type='checkbox']");
+		const selectedFields = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
+
+		const cityInfos = document.querySelectorAll(".city-info p");
+		cityInfos.forEach(info =>{
+			if(selectedFields.includes(info.getAttribute("data-key"))){
+				info.style.display = "block";
+			}else{
+				info.style.display = "none";
+			}
+		});
+	 }
+
+document.getElementById("checkbox-container").addEventListener("change", updateDisplayedFields);
+	 
 window.onload = function(){
 	renderHousingData(housingData);
 	updateCityData();
+	updateDisplayedFields();
 };
